@@ -10,7 +10,6 @@ export default function Features(props) {
       const itemHash = slugify(JSON.stringify(item));
       return (
         <Options
-          selected={props.selected}
           itemHash={itemHash}
           item={item}
           key={item.name}
@@ -33,10 +32,5 @@ export default function Features(props) {
     );
   });
 
-  return (
-    <form className="main__form">
-      <h2>Customize your laptop</h2>
-      {features}
-    </form>
-  );
+  return <div>{features}</div>;
 }
