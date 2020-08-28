@@ -1,15 +1,40 @@
 import React from "react";
 import Options from "./Options";
+import slugify from "slugify";
+import store from "./store";
 
-export default function (props) {
+export default function Features(props) {
+  const features = Object.keys(store.FEATURES).map((feature, idx) => {
+    const featureHash = feature + "-" + idx;
+    const options = store.FEATURES[feature].map((item) => {
+      const itemHash = slugify(JSON.stringify(item));
+      return (
+        <Options
+          selected={props.selected}
+          itemHash={itemHash}
+          item={item}
+          key={item.name}
+          clickUpdate={props.clickUpdate}
+          feature={feature}
+          featureHash={featureHash}
+        />
+      );
+    });
+
+    return (
+      <fieldset className="feature" key={featureHash}>
+        <legend className="feature__name">
+          <h3>{feature}</h3>
+        </legend>
+        {options}
+      </fieldset>
+    );
+  });
+
   return (
-    <section className="main__form">
-      <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
-      <Options
-        features={props.features}
-        selected={props.selected}
-        updateFeature={props.updateFeature}
-      />
-    </section>
+    <form className="main__form">
+      <h2>Customize your laptop</h2>
+      {features}
+    </form>
   );
 }
