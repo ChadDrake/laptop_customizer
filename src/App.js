@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import slugify from "slugify";
 import store from "./store";
 import "./App.css";
+import List from "./List";
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -14,6 +15,7 @@ const USCurrencyFormat = new Intl.NumberFormat("en-US", {
 });
 class App extends Component {
   state = {
+    features: store.FEATURES,
     selected: {
       Processor: {
         name: "17th Generation Intel Core HB (7 Core with donut spare)",
@@ -41,7 +43,9 @@ class App extends Component {
       selected,
     });
   };
-
+  handleUpdate = (a, b) => {
+    console.log("test");
+  };
   render() {
     const features = Object.keys(store.FEATURES).map((feature, idx) => {
       const featureHash = feature + "-" + idx;
@@ -119,5 +123,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
