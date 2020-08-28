@@ -1,12 +1,12 @@
 import React from "react";
 import Options from "./Options";
 import slugify from "slugify";
-import store from "./store";
+// import store from "./store";
 
 export default function Features(props) {
-  const features = Object.keys(store.FEATURES).map((feature, idx) => {
+  const features = Object.keys(props.features).map((feature, idx) => {
     const featureHash = feature + "-" + idx;
-    const options = store.FEATURES[feature].map((item) => {
+    const options = props.features[feature].map((item) => {
       const itemHash = slugify(JSON.stringify(item));
       return (
         <Options
@@ -17,6 +17,8 @@ export default function Features(props) {
           clickUpdate={props.clickUpdate}
           feature={feature}
           featureHash={featureHash}
+          features={props.features}
+          currency={props.currency}
         />
       );
     });
