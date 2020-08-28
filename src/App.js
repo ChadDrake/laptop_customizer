@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Features from "./Features";
 import Summary from "./Summary";
+import Header from "./Header";
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
@@ -44,26 +45,9 @@ class App extends Component {
     this.updateFeature(feature, newValue);
   };
   render() {
-    // const summary = Object.keys(this.state.selected).map((feature, idx) => {
-    //   const featureHash = feature + "-" + idx;
-    //   const selectedOption = this.state.selected[feature];
-
-    //   return (
-    //     <div className="summary__option" key={featureHash}>
-    //       <div className="summary__option__label">{feature} </div>
-    //       <div className="summary__option__value">{selectedOption.name}</div>
-    //       <div className="summary__option__cost">
-    //         {store.USCurrencyFormat.format(selectedOption.cost)}
-    //       </div>
-    //     </div>
-    //   );
-    // });
-
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+        <Header />
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
@@ -83,15 +67,3 @@ class App extends Component {
   }
 }
 export default App;
-{
-  /* <section className="main__summary">
-            <h2>Your cart</h2>
-            {summary}
-            <div className="summary__total">
-              <Total
-                selected={this.state.selected}
-                currency={store.USCurrencyFormat}
-              />
-            </div>
-          </section> */
-}
